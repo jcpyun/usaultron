@@ -1,0 +1,197 @@
+<!--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                       
+                                                            Designed by John in Pittsburgh
+                                                            github.com/jcpyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+{% load staticfiles %}
+{% include 'mynavbar.html' %}
+
+
+<link rel="icon" href="{% static 'img/jp.png' %}" type="image/png" sizes="16x16">
+<link href="{% static 'css/jcpplot.css' %}" rel="stylesheet">
+<link href="{% static 'css/plottable.css' %}" rel="stylesheet">
+<style>
+    body {
+    background-color: #101010;
+}
+
+@font-face {
+    font-family: 'Blender'; /*a name to be used later*/
+    src: url("{% static 'font/blender.ttf' %}"); /*URL to font*/
+}
+
+</style>
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/d3.js' %}"></script>
+<script src="{% static 'js/plottable.js' %}"></script>
+</br>
+</br>
+</br>
+</br>
+</br>
+<div class=" blender"> {{ company|upper }}
+                {{ end }}     
+               
+  {% if delta  > 0 %}
+  <font color="green">{{ delta }}
+  {{ percent }}</font>
+  {% else %}
+  <font color="red">{{ delta }}
+  {{ percent }}</font>
+  {% endif %}         
+</div>
+
+
+<div class="row">  
+  <div class="col-6">
+    <div class= " wow-form">
+    <svg width="100%" height="50%" id="example"></svg>
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="markfont">
+        <marquee behavior="scroll" direction= "up" scrollamount="10" bgcolor="#303030" loop="-1" width="80%" height="50%">   
+                {{ query }}
+                {{ start }}
+                {{ end }}
+        </marquee> 
+    </div>
+  </div>
+</div>
+
+
+
+
+<script>
+function BloombergChart(){
+var data={{ query }}
+var closed= {{ closing }}
+
+
+var xGrid = new Plottable.Scales.Linear();
+var yGrid = new Plottable.Scales.Linear();
+var gridlines = new Plottable.Components.Gridlines(xGrid, yGrid);
+gridlines.renderTo("svg#example");
+
+
+var xScale = new Plottable.Scales.Linear();
+var yScale = new Plottable.Scales.Linear();
+
+var xAxis= new Plottable.Axes.Numeric(xScale,"bottom");
+var yAxis=new Plottable.Axes.Numeric(yScale,"left");
+
+
+console.log(data);
+
+var startplot= new Plottable.Plots.Line()
+  .addDataset(new Plottable.Dataset(data))
+  .x(function(d,i) {return i; }, xScale)
+  .y(function(d) {return closed;},yScale)
+  .attr("stroke-dasharray", "4,4")
+  .attr("stroke","#FFA500");
+
+
+var plot = new Plottable.Plots.Line()
+  .addDataset(new Plottable.Dataset(data))
+  .x(function(d,i) { return i; }, xScale)
+  .y(function(d) { return d; }, yScale)
+  .attr("stroke","#00fff0");
+
+
+var interaction = new Plottable.Interactions.Click();
+
+function onClickInteraction(point) {
+  plot.selections().attr("fill", "#5279c7");
+  var selection = plot.entitiesAt(point)[0].selection;
+  selection.attr("fill", "#F99D42");
+}
+
+interaction.onClick(onClickInteraction);
+interaction.attachTo(plot);
+
+
+
+
+var totalPlot= new Plottable.Components.Group([plot,startplot]);
+var chart1= new Plottable.Components.Table([
+  [yAxis, totalPlot],
+  [null, xAxis]
+]);
+chart1.renderTo("svg#example");
+}
+
+$(document).ready(function() {
+  BloombergChart();
+});
+
+// window.addEventListener("resize", function() {
+//   plot.redraw();
+// });
+
+</script>
+

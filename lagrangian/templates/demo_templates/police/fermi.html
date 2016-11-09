@@ -1,0 +1,169 @@
+{% load staticfiles %}
+{% include 'demo_templates/police/intnav.html' %}
+<!--http://sigmajs.org/-->
+<style>
+    body {
+   // background-color: #102010;
+    background: #102010;
+    background: -webkit-linear-gradient(left top, #0A1A0A, #001000); /* Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #0A1A0A, #001000); /* Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #0A1A0A, #001000); /*  Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right,#000000,  #001000); /* Standard */
+
+}
+@font-face {
+    font-family: 'Blender'; 
+    src: url("{% static 'font/blender.ttf' %}");
+}
+</style>
+<link rel="icon" href="{% static 'img/qw.png' %}" type="image/png" sizes="16x16">
+
+<link href="{% static 'css/demo/police/home.css' %}" rel="stylesheet">
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/d3.js' %}"></script>
+<script src="{% static 'js/p5.min.js' %}"></script>
+<script src="{% static 'js/police/sketch.js' %}"></script>
+<script src="{% static 'js/plottable.js' %}"></script>
+<link href="{% static 'css/plottable.css' %}" rel="stylesheet">
+
+
+    <style>
+
+.node {
+    fill: #ccc;
+    stroke: #fff;
+    stroke-width: 2px;
+}
+
+.link {
+    stroke: #777;
+    stroke-width: 2px;
+}
+
+    </style>
+
+<div class="rowwithside">
+    <div class="colz-12">
+        <div class="first" >
+                THERMAL VANDER WAAL PHYSICS - Javascript - John Pyun
+                </br>
+                V on X axis, P on Y Axis
+        </div>
+    </div>
+</div>
+<div class="rowwithside">
+    <div class="colz-12">
+        <div class="feed">
+            Graph:
+        </div>
+    </div>
+    <div class="colz-12">
+        <div id='myContainer'></div>
+    </div>
+</div>
+<script>
+function setup() {
+    
+    var canvasHeight=800;
+    var canvasWidth=800;
+	var myCanvas=createCanvas(canvasWidth,canvasHeight);
+	myCanvas.parent('myContainer');
+    background(0,0,0);
+    
+
+    background(240);
+	drawGrid();
+   // tier();
+    noFill();
+    stroke(255, 0, 0);
+    var Avogadro= 6.0221409* 10**23;
+    var AtomicMassUnit= 1.66*10**(-27) ;
+    var AMU= Avogadro/AtomicMassUnit;
+    
+    // We will use CO2
+    // For CO2:
+    var a_val= 3.59;
+    var b_val=0.0427;
+    var kb_val=1.38064852 * (10**(-23));
+    var R = 0.082
+
+    var Tc_val= (8*a_val)/(27*b_val*kb_val);
+    beginShape();
+    for (var i=0;i<1000;i++){
+        vertex(i,vander(kb_val,Tc_val,a_val,b_val,i/100,Avogadro,AMU));
+    }
+    
+    endShape();
+    stroke(0,0,255);
+    
+    
+    beginShape(); //below
+    println(Tc_val);
+    for (var i=0;i<1000;i++){
+        vertex(i,vander(kb_val,Tc_val-Tc_val/2,a_val,b_val,i/100,Avogadro,AMU));
+    }
+    endShape();
+     stroke(255,10 ,255);
+     
+    beginShape(); //above
+    println(Tc_val);
+    for (var i=0;i<1000;i++){
+        vertex(i,vander(kb_val,Tc_val+Tc_val/2,a_val,b_val,i/100,Avogadro,AMU));
+    }
+    endShape();
+    
+    
+    // For Ideal Gas:
+    
+    beginShape();
+    for (var i=0;i<1000;i++){
+        vertex(i,ideal(0.082,Tc_val,i/10));
+    }
+    endShape();
+    
+   
+
+}
+
+function ideal(R,T,V){
+    P= R*T/V
+
+    println("V value: "+V+" P value: "+P);
+    return P*10;
+}
+
+function vander(kb,T,a,b,V,Avo,AMU){
+    P= (kb*T)/(V-b)  -  a/(V*V)
+   //P= (AMU*kb*T)/(V-b*AMU)  -  a*AMU*AMU/(V*V)
+    println("V value: "+V+" P value: "+P);
+    return P*10;
+}
+
+
+function draw() {
+ //line(0, 20, 100, 20);
+}
+function tier(){
+    noFill();
+    stroke(0, 0, 0);
+    bezier(10,10,20,10,30,10,60,60);
+
+}
+function drawGrid() {
+	stroke(200);
+	fill(120);
+	for (var x=-width; x < width; x+=100) {
+		line(x, -height, x, height);
+		text(x/1000, x+1, 12);
+	}
+	for (var y=-height; y < height; y+=100) {
+		line(-width, y, width, y);
+		text(y/10, 1, y+12);
+	}
+}
+
+function drawText(){
+
+}
+
+</script>

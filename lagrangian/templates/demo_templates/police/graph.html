@@ -1,0 +1,119 @@
+{% load staticfiles %}
+{% include 'demo_templates/police/intnav.html' %}
+<style>
+    body {
+   // background-color: #102010;
+    background: #102010;
+    background: -webkit-linear-gradient(left top, #0A1A0A, #001000); /* Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #0A1A0A, #001000); /* Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #0A1A0A, #001000); /*  Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right,#000000,  #001000); /* Standard */
+
+}
+@font-face {
+    font-family: 'Blender'; 
+    src: url("{% static 'font/blender.ttf' %}");
+}
+</style>
+<link rel="icon" href="{% static 'img/qw.png' %}" type="image/png" sizes="16x16">
+
+<link href="{% static 'css/demo/police/home.css' %}" rel="stylesheet">
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/d3.js' %}"></script>
+<script src="{% static 'js/p5.min.js' %}"></script>
+<script src="{% static 'js/police/sketch.js' %}"></script>
+<script src="{% static 'js/plottable.js' %}"></script>
+<link href="{% static 'css/plottable.css' %}" rel="stylesheet">
+
+
+    <style>
+
+.node {
+    fill: #ccc;
+    stroke: #fff;
+    stroke-width: 2px;
+}
+
+.link {
+    stroke: #777;
+    stroke-width: 2px;
+}
+
+    </style>
+
+<div class="rowwithside">
+    <div class="colz-12">
+        <div class="first" >
+                TORONTO POLICE SERVICE
+        </div>
+    </div>
+</div>
+<div class="rowwithside">
+    <div class="colz-12">
+        <div class="feed">
+            Graph:
+        </div>
+    </div>
+    <div class="colz-12">
+        <div id='myContainer'></div>
+    </div>
+</div>
+<script>
+
+
+var red= "#dc3439";
+var blue= "#3355d5";
+var yellow= "#eeb500";
+var green= "#86bd00";
+var nodez=[];
+
+var yoff = 0.0;
+var state = false;
+
+function setup() {
+  var myCanvas= createCanvas(windowWidth-50, windowHeight);
+  myCanvas.parent('myContainer');
+  background(0,0,0);
+  
+}
+function draw() {
+
+  var r = 255;
+  var g= 255;
+  var b=255;
+  stroke(r, g, b);
+  strokeWeight(0.2);
+  fill(0,0,0);
+  beginShape();
+
+  var xoff = 0;
+
+  if (state) {
+    var xoff = yoff;
+    for (var x = -2; x <= width+4; x += 10) {
+      var y = map(noise(xoff, yoff), 0, 1, 1, 500)
+      vertex(x, y);
+      xoff += 0.04;
+    }
+  } else {
+
+    for (var x = -2; x <= width+4; x += 10) {
+      var y = map(noise(xoff, yoff), 0, 1, 1, 500)
+      vertex(x, y);
+      xoff += 0.05;
+    }
+  }
+
+  yoff += 0.007;
+  vertex(width+4, height+4);
+  vertex(0, height+4);
+  endShape(OPEN);
+
+}
+
+function mousePressed() {
+  state = !state;
+}
+
+
+</script>

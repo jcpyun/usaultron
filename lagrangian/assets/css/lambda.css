@@ -1,0 +1,207 @@
+/* ********
+
+mapping 
+
+******** */
+#mapid { height: 100%; }
+
+/*  
+//////////
+*/
+
+@font-face {
+    font-family: 'Blender'; /*a name to be used later*/
+    src: url("{% static 'font/blender.ttf' %}"); /*URL to font*/
+}
+.innerblender{
+
+    font-family: "Blender","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size:100px;
+    color: #ffffff;
+	padding-top:250px;
+    padding-bottom:300px;
+   
+}
+.lagrangian{
+    color: #4CAF50;
+}
+.granite{
+    color: #4CAF50;
+}
+.opensource{
+    color: #992212;
+}
+.centeralign{
+     text-align:center;
+}
+ #infocontainer {
+     height:100%;
+     background: #010101;
+ }
+.containerinfo{
+    font-family: "Blender","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 200;
+    letter-spacing: 1px;
+    font-size:20px;
+    color: #aaaaaa;
+}
+.formula{
+    font-family: "Blender","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size:40px;
+    color: #fff;
+}
+.innerdescript{
+    font-family: "Blender","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 200;
+    letter-spacing: 1px;
+    font-size:20px;
+    color: #aaaaaa;
+}
+.coredescript{
+    font-family: "Blender","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size:40px;
+    color: #ffffff;
+}
+.coredescriptinner{
+    font-family: "Blender","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 100;
+    letter-spacing: 1px;
+    font-size:20px;
+    color: #ffffff;
+}
+.wowbutton{
+  position:relative;
+  font-family: "Blender",'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  background-color: Transparent;
+  border: 2px solid #43A047;
+  width: 50%;
+  padding: 15px;
+  color: #FFF;
+  font-size: 20px;
+ 
+  cursor: pointer;
+}
+.wowbutton:hover {
+  background: #43A047;
+}
+.loginbutton{
+  position:relative;
+  font-family: "Blender",'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  background-color: Transparent;
+  border: 2px solid #43A047;
+  width: 20%;
+  padding: 15px;
+  color: #FFF;
+  font-size: 20px;
+ 
+  cursor: pointer;
+}
+.loginbutton:hover {
+  background: #43A047;
+}
+
+
+.markfont{
+    position: relative;
+    font-family: "Blender","Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: 	#FF4500;
+	text-align: center;
+	margin-top:0px;
+}
+/*************
+**************/
+* {
+    box-sizing: border-box;
+}
+.row::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+[class*="col-"] {
+    float: left;
+    padding: 15px;
+    /*border: 1px solid red;*/
+}
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+/*****
+*****/
+
+[class*="colz-"] {
+    float: left;
+    padding: 0px;
+    /*border: 1px solid red;*/
+}
+.colz-1 {width: 8.33%;}
+.colz-2 {width: 16.66%;}
+.colz-3 {width: 25%;}
+.colz-4 {width: 33.33%;}
+.colz-5 {width: 41.66%;}
+.colz-6 {width: 50%;}
+.colz-7 {width: 58.33%;}
+.colz-8 {width: 66.66%;}
+.colz-9 {width: 75%;}
+.colz-10 {width: 83.33%;}
+.colz-11 {width: 91.66%;}
+.colz-12 {width: 100%;}
+
+
+
+
+
+.search-form{
+    height: 40px;
+    background-color: #e1e1e1;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+    border-radius: 100px;
+	position:relative;
+    width:100%;
+    }
+
+.search-form .searchbutton{
+  position:absolute;
+	top:10%;
+	right:5px;
+    }
+
+
+.sfield {
+    float: left;
+    margin: 5px 0 0 8px;
+    font: 20pt "Blender", sans-serif;
+    text-align: center;
+    color: #888;
+    height: 30px;
+    line-height: 18px;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    width:100%;
+    }
+
+
+
+
+
+/* ///////// */
+
+

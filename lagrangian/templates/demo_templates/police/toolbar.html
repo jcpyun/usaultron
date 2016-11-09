@@ -1,0 +1,333 @@
+{% load staticfiles %}
+
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/d3.js' %}"></script>
+<script src="{% static 'js/plottable.js' %}"></script>
+<link href="{% static 'css/plottable.css' %}" rel="stylesheet">
+
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+
+
+
+<link rel="icon" href="{% static 'img/qw.png' %}" type="image/png" sizes="16x16">
+
+<link href="{% static 'css/demo/police/dashboard.css' %}" rel="stylesheet">
+{% include 'demo_templates/police/intnav.html' %}
+
+<div class="rowwithside">
+    <div class="colz-12">
+        <div class="first" >
+                TORONTO POLICE SERVICE
+
+<!--<img src="http://opendata.toronto.ca/transportation/tmc/rescucameraimages/ComparisonImages/loc9104n.jpg" >
+<img src="http://opendata.toronto.ca/transportation/tmc/rescucameraimages/CameraImages/loc8053.jpg">-->
+
+        </div>
+    </div>
+    <div class="colz-6" style="background:#111">
+        <div class="second">
+            <div class= "search-form">
+                <form method = 'GET' action=''>
+                    <div class="row">
+                        <div class="colz-10">
+                            <input  class="sfield" type="text" name="suspect_search_box"  placeholder="Look up suspect" >
+                        </div>
+                        <div class="colz-2">
+                            <input type="image" class="searchbutton" type='submit' src="{% static 'img/search.png' %}" width="30px"height="30px" >
+                        </div>
+                    </div>
+                </form>  
+            </div>
+            Suspect:{% if suspect != None %}
+                {{ suspect }}
+                {% endif %}
+        </div>
+    </div>
+    <div class="colz-6" style="background:#111">
+        <div class= "search-form">
+                <form method = 'GET' action=''>
+                    <div class="row">
+                        <div class="colz-10">
+                            <input  class="sfield" type="text" name="victim_search_box"  placeholder="Look up victim" >
+                        </div>
+                        <div class="colz-2">
+                            <input type="image" class="searchbutton" type='submit' src="{% static 'img/search.png' %}" width="30px"height="30px" >
+                        </div>
+                    </div>
+                </form>  
+            </div>
+        <div class="second">
+            Victim:{% if victim != None %}
+                {{ victim }}
+                {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="rowwithside">
+    <div class="colz-a">
+        <div id="rightsidebar">
+            <div class="second">
+           
+                {% for instance in data %}
+                    ---------------- </br>
+                    {% for field, value in instance.fields.items %}
+                        {{ field }}: {{ value }} </br>
+                    {% endfor %}
+                {% endfor %}
+                </br>########
+              
+               
+                <!--{% for name, value in histogram.get_fields %}
+                {% if value %}
+                    {{ name }} => {{ value }}
+                {% endif %}
+                {% endfor %}-->
+
+            </div>
+
+            
+             
+
+                
+                
+        </div>
+    </div>
+    <div class="colz-b">
+        <div id="mapid" style="height:75%;"></div>
+    </div>
+    <div class="colz-c">
+        <div id="rightsidebar">
+            <div class="workspace">Workspace </div></br>
+            <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <!--<div id="wau"></div>-->
+        </div>
+    </div>
+</div>
+<style>
+#div1, #div2 {
+    float: left;
+    width: 100%;
+    height: 230px;
+    
+  
+    border: 1px solid black;
+}
+</style>
+
+<script>
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+   ev.preventDefault();
+    var data=ev.dataTransfer.getData("Text");
+    var s=document.getElementById(data);
+    ev.target.appendChild(s);
+    ev.target.src=s.src;
+    
+}
+</script>
+
+
+
+
+
+<script>
+    ///////
+xmlhttp=new XMLHttpRequest();
+xmlhttp.open("GET", "http://127.0.0.1:8000/media/traffic.json", false);
+xmlhttp.send();
+var parseddata = JSON.parse(xmlhttp.responseText);
+console.log(parseddata);
+console.log(parseddata.Data.length)
+
+////////////
+/// map initialization
+var mymap = L.map('mapid', { attributionControl:false }).setView([43.682916, -79.401481], 12);
+
+L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox.dark',
+    accessToken: 'pk.eyJ1IjoiamNweXVuIiwiYSI6ImNpdXExNzkxejAyMGcydHFteDhrNXAwc20ifQ.gY2JiAMFphomRoFfGMKVEg'
+}).addTo(mymap);
+/////////////
+///////
+// popup options
+var customOptions =
+        {
+        'className' : 'custom',
+        }
+/////////////////////////////
+function dataToMap(n){
+    for (var i=0;i<parseddata.Data.length;i++){
+        if (parseddata.Data[i].Latitude != "" && parseddata.Data[i].Longitude!= ""){
+            var customPopup=
+                
+                        "Camera: "+parseddata.Data[i].Number+"</br>"
+                        +"Location: "+parseddata.Data[i].Name+"</br>"
+                        +"Longitude: "+parseddata.Data[i].Longitude+"</br>"
+                        +"Latitude: "+parseddata.Data[i].Latitude
+                        
+                        +"<img id= 'drag1' draggable='true' ondragstart='drag(event)' src='http://opendata.toronto.ca/transportation/tmc/rescucameraimages/CameraImages/loc"+parseddata.Data[i].Number+".jpg'/>"
+                        
+            var outerPopup=
+                     "Camera: "+parseddata.Data[i].Number+"</br>"
+                        +"Location: "+parseddata.Data[i].Name+"</br>"
+                        +"Longitude: "+parseddata.Data[i].Longitude+"</br>"
+                        +"Latitude: "+parseddata.Data[i].Latitude
+                        
+                        +"<img src='http://opendata.toronto.ca/transportation/tmc/rescucameraimages/CameraImages/loc"+parseddata.Data[i].Number+".jpg'/>"
+                        
+                            +"<img class= 'smallpic' src='http://opendata.toronto.ca/transportation/tmc/rescucameraimages/ComparisonImages/loc"+parseddata.Data[i].Number+"n.jpg'/>"
+                            +"<img class='smallpic'src='http://opendata.toronto.ca/transportation/tmc/rescucameraimages/ComparisonImages/loc"+parseddata.Data[i].Number+"s.jpg'/>"
+                  
+                            +"<img class= 'smallpic' src='http://opendata.toronto.ca/transportation/tmc/rescucameraimages/ComparisonImages/loc"+parseddata.Data[i].Number+"e.jpg'/>"
+                            +"<img class= 'smallpic' src='http://opendata.toronto.ca/transportation/tmc/rescucameraimages/ComparisonImages/loc"+parseddata.Data[i].Number+"w.jpg'/>"
+            var circle= L.circle([parseddata.Data[i].Latitude, parseddata.Data[i].Longitude],{
+                color: 'blue',
+                fillColor:'#0f3',
+                fillOpacity: 0.5,
+                radius: 50
+                }).addTo(mymap);
+            circle.bindPopup(customPopup,customOptions);
+           /* circle.on("click", function(d) {
+                document.getElementById("wau").innerHTML= outerPopup;
+            })*/
+            
+        }
+    }
+}
+dataToMap(parseddata);
+////////////////////////////
+
+
+
+////////////
+/////// for finding a suspect
+var alllat={{alllat}}
+var alllong={{alllong}}
+var suslat= {{ suslat }}
+var suslong={{ suslong }}
+///////////////////////
+for (var j=0;j<alllat.length;j++){
+    var suspect=L.circle([alllat[j],alllong[j]],{
+    color:"red",
+    fillColor:  '#f03',
+    fillOpacity:0.5,
+    radius:100,
+}).addTo(mymap);
+}
+
+
+
+
+
+
+var states = [{
+    "type": "Feature",
+    "properties": {"party": "Republican"},
+    "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+            [-104.05, 48.99],
+            [-97.22,  48.98],
+            [-96.58,  45.94],
+            [-104.03, 45.94],
+            [-104.05, 48.99]
+        ]]
+    }
+}, {
+    "type": "Feature",
+    "properties": {"party": "Democrat"},
+    "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+            [-109.05, 41.00],
+            [-102.06, 40.99],
+            [-102.03, 36.99],
+            [-109.04, 36.99],
+            [-109.05, 41.00]
+        ]]
+    }
+}];
+
+L.geoJSON(states, {
+    style: function(feature) {
+        switch (feature.properties.party) {
+            case 'Republican': return {color: "#ff0000"};
+            case 'Democrat':   return {color: "#0000ff"};
+        }
+    }
+}).addTo(mymap);
+
+
+
+/////////////////////////////
+/// attempt at hover feature
+function highlightFeature(e) {
+    var layer = e.target;
+
+    layer.setStyle({
+        weight: 5,
+        color: '#666',
+        dashArray: '',
+        fillOpacity: 0.7
+    });
+
+    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+        layer.bringToFront();
+    }
+    info.update(layer.feature.properties);
+}
+
+
+
+
+
+
+</script>
+
+
+<script> 
+    // watermark
+L.Control.Watermark = L.Control.extend({
+    onAdd: function(mymap) {
+        var img = L.DomUtil.create('img');
+        img.src = "{% static 'img/jp.png' %}";
+        img.style.width = '50px';  
+        return img;
+    },
+    onRemove: function(mymap) {
+    }
+});
+
+L.control.watermark = function(opts) {
+    return new L.Control.Watermark(opts);
+}
+L.control.watermark({ position: 'topright' }).addTo(mymap);
+</script>
+<style>
+.custom .leaflet-popup-tip,
+.custom .leaflet-popup-content-wrapper {
+    background: #909090;
+    color: #ffffff;
+    width:500px;
+    font: 10pt "Blender", sans-serif; 
+}
+.leaflet-popup-content{
+    width:400px !important;
+}
+
+</style>

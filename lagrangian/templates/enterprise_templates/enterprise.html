@@ -1,0 +1,113 @@
+<!--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                       
+                                                            Designed by John in Pittsburgh
+                                                            github.com/jcpyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+{% load staticfiles %}
+{% include 'mynavbar.html' %}
+
+
+<link rel="icon" href="{% static 'img/jp.png' %}" type="image/png" sizes="16x16">
+<link href="{% static 'css/jcpyun.css' %}" rel="stylesheet">
+<style>
+    body {
+   // background-color: #102010;
+    background: #102010; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(left top, #0A1A0A, #203020); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #0A1A0A, #203020); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #0A1A0A, #203020); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right,#000000,  #304030); /* Standard syntax (must be last) */
+
+}
+@font-face {
+    font-family: 'Blender'; /*a name to be used later*/
+    src: url("{% static 'font/blender.ttf' %}"); /*URL to font*/
+}
+</style>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+<div class="fade1 blender"> Granite</div>
+</br>
+
+<!--<div class=" lowerb">Open Source</div>-->
+
+</br>
+</br>
+
+
+<div class= " wow-form">
+<form method = 'POST' action=''>{% csrf_token %}
+     {{ form.as_p }}
+<button type='submit' name='button1' value='save'> Execute </button>
+</form>   
+</div>

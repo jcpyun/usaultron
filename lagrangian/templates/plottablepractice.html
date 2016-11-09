@@ -1,0 +1,132 @@
+<!--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                       
+                                                            Designed by John in Pittsburgh
+                                                            github.com/jcpyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+{% load staticfiles %}
+
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/d3.js' %}"></script>
+<script src="{% static 'js/plottable.js' %}"></script>
+<link href="{% static 'css/plottable.css' %}" rel="stylesheet">
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+
+
+
+<link rel="icon" href="{% static 'img/jp.png' %}" type="image/png" sizes="16x16">
+<link href="{% static 'css/jcpyun.css' %}" rel="stylesheet">
+
+<svg width="100%" height="50%" id="tester"></svg>
+
+<script type="text/javascript">
+function makeBasicChart() {
+
+  var xScale = new Plottable.Scales.Linear();
+  var yScale = new Plottable.Scales.Linear([0,10]);
+
+  var xAxis = new Plottable.Axes.Numeric(xScale, "bottom");
+  var yAxis = new Plottable.Axes.Numeric(yScale, "left");
+
+  var plot1 = new Plottable.Plots.Line();
+  plot1.x(function(d) { return d.x; }, xScale);
+  plot1.y(function(d) { return d.y; }, yScale);
+  plot1.attr("stroke", "#00ff00");
+  plot1.attr("stroke-width", 10);
+
+
+  var data = [
+    { "x": 0, "y": 1, "stroke": "#ff0000" },
+    { "x": 1, "y": 2 },
+  ];
+
+  var dataset = new Plottable.Dataset(data);
+  plot1.addDataset(dataset);
+
+  var chart1 = new Plottable.Components.Table([
+    [yAxis, plot1],
+    [null, xAxis]
+  ]);
+  chart1.renderTo("svg#tester");
+}
+
+$(document).ready(function() {
+  makeBasicChart();
+});
+
+</script>
+
+<style>
+#mapid { height: 180px; }
+</style>
+<script>
+var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+</script>
+
+ <div id="mapid"></div>

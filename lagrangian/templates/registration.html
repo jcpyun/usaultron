@@ -1,0 +1,96 @@
+<!--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                       
+                                                            Designed by John in Pittsburgh
+                                                            github.com/jcpyun
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+{% load staticfiles %}
+{% include 'mynavbar.html' %}
+
+<link rel="icon" href="{% static 'img/jp.png' %}" type="image/png" sizes="16x16">
+<link href="{% static 'css/jcpyun.css' %}" rel="stylesheet">
+<style>
+    body {
+    background-color: #505050;
+}
+@font-face {
+    font-family: 'Blender'; /*a name to be used later*/
+    src: url("{% static 'font/blender.ttf' %}"); /*URL to font*/
+}
+</style>
+</br>
+</br>
+</br>
+</br>
+</br>
+<div class="fade1 blender"> Login</div>
+<div class= " wow-form">
+	<form class="" method = 'GET' action = "">          
+				<input type= 'text' style="float: right"  name = 'token_auth' placeholder = 'Insert your token here...' />
+                <button type= 'submit' action="home.html" >Access</button>
+	</form>
+</div>

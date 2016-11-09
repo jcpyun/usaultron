@@ -1,0 +1,181 @@
+{% load staticfiles %}
+{% include 'demo_templates/police/intnav.html' %}
+<style>
+    body {
+   // background-color: #102010;
+    background: #102010;
+    background: -webkit-linear-gradient(left top, #0A1A0A, #001000); /* Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #0A1A0A, #001000); /* Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #0A1A0A, #001000); /*  Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right,#000000,  #001000); /* Standard */
+
+}
+@font-face {
+    font-family: 'Blender'; 
+    src: url("{% static 'font/blender.ttf' %}");
+}
+</style>
+<link rel="icon" href="{% static 'img/qw.png' %}" type="image/png" sizes="16x16">
+
+<link href="{% static 'css/demo/police/home.css' %}" rel="stylesheet">
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/d3.js' %}"></script>
+<script src="{% static 'js/p5.min.js' %}"></script>
+<script src="{% static 'js/police/sketch.js' %}"></script>
+<script src="{% static 'js/plottable.js' %}"></script>
+<link href="{% static 'css/plottable.css' %}" rel="stylesheet">
+
+
+    <style>
+
+.node {
+    fill: #ccc;
+    stroke: #fff;
+    stroke-width: 2px;
+}
+
+.link {
+    stroke: #777;
+    stroke-width: 2px;
+}
+
+    </style>
+
+<div class="rowwithside">
+    <div class="colz-12">
+        <div class="first" >
+                TORONTO POLICE SERVICE
+        </div>
+    </div>
+</div>
+<div class="rowwithside">
+    <div class="colz-6">
+        <div class="feed">
+            New Intelligence:
+            {{ histogram.iteritems }}
+            {% for x in histogram.iteritems %}
+            {{ x }}
+            {% endfor %}
+
+        </div>
+    </div>
+    <div class="colz-6">
+        <div class="feed">
+            Feed:
+        </div>
+    </div>
+    <div class="colz-3">
+        <div class= " wow-form">
+            <form method = 'POST' action=''>{% csrf_token %}
+                {{ form.as_p }}
+                <button type='submit' name='button1' value='save'> Upload </button>
+            {{ histogram }}
+            </form>   
+        </div>
+    </div>
+    <div class="colz-3">
+        <div class= " wow-form">
+            <form method = 'POST' action=''>{% csrf_token %}
+                {{ objectform.as_p }}
+                <button type='submit' name='button2' value='save'> Upload </button>
+            
+            </form>   
+        </div>
+    </div>
+    <div class="colz-9">
+        <div id='myContainer'></div>
+    </div>
+</div>
+<script>
+    /*
+
+var red= "#dc3439";
+var blue= "#3355d5";
+var yellow= "#eeb500";
+var green= "#86bd00";
+var nodez=[];
+
+var yoff = 0.0;
+var state = false;
+
+function setup() {
+  var myCanvas= createCanvas(windowWidth, windowHeight);
+  myCanvas.parent('myContainer');
+  background(0,0,0);
+  var jsonurl="http://127.0.0.1:8000/media/traffic.json";
+  var data=loadJSON(jsonurl,gotData);
+  
+}
+function item(input){
+  this.Number=input.Number;
+  this.Name=input.Name;
+  this.Latitude=input.Latitude;
+  this.Longitude=input.Longitude;
+  this.Group=input.Group;
+  this.rad= 25;
+  this.display = function(){
+    if (this.Group=="Arterial"){
+      fill("purple");
+      ellipse(this.Number-8000,this.Number-8000,this.rad,this.rad);
+    }
+    else if (this.Group=="Lake Shore"){
+       fill("red");
+      ellipse(this.Number-9000,this.Number-9000,this.rad,this.rad); 
+    }
+  }
+  this.hover = function(){
+    var d = dist(mouseX,mouseY,mouseX+50,mouseY+50);
+    if (d<(this.rad/2)){
+    //  this.colour= color(random(255),random(255),random(255));
+      textSize(20);
+      // fill=("teal");
+      // rect()
+      fill("red");
+      text("seat order: ");
+      text("row order: ");
+      text("seat attributes: ");
+    }
+  }
+  this.wow = function(){
+    var d = dist(mouseX,mouseY,this.x,this.y);
+    if (d<(this.rad/2)){
+      this.colour= color(random(255),random(255),random(255));
+      textSize(20);
+      fill("red");
+      text(this.seat_order,300,300,400,400);
+    }
+  }
+}
+
+
+  
+
+
+
+function mousePressed(){
+  for (i = 0; i < data.length; i++) {
+    if (data[i].section_id == sel.value()) {
+      circle[i].wow();
+    }
+  }
+}
+function gotData(data){
+   
+   
+    for (i = 0; i < data.Data.length; i++) {
+        nodez.push(new item(data.Data[i]));
+    }
+   
+ 
+}
+function draw() {
+    fill("red");
+    ellipse(30,30,50,50);
+   for (i = 0; i < nodez.length;i++){
+       nodez[i].hover();
+       nodez[i].display();
+   }
+   
+}
+*/
+</script>

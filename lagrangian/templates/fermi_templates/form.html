@@ -1,0 +1,154 @@
+{% load staticfiles %}
+
+<link rel="icon" href="{% static 'img/jp.png' %}" type="image/png" sizes="16x16">
+<link href="{% static 'css/lagrangian.css' %}" rel="stylesheet">
+
+<style>
+    body {
+   // background-color: #102010;
+    background: #102010;
+    background: -webkit-linear-gradient(left top, #0A1A0A, #102010); /* Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #0A1A0A, #102010); /* Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #0A1A0A, #102010); /*  Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right,#000000,  #102010); /* Standard */
+     margin: 0;
+
+}
+@font-face {
+    font-family: 'Blender'; 
+    src: url("{% static 'font/blender.ttf' %}");
+}
+</style>
+
+
+
+<div class="row" style="padding-bottom:200px;">
+    
+        <div class= "innerblender centeralign" style="margin-bottom:10px">
+            Fermi
+           
+        </div>
+        <div class="col-4">
+        
+    </div>
+    
+
+    <div class="col-4">
+        <div class= "formula centeralign"> L 
+            </div>
+        <div class= "innerdescript">
+            
+            <span class= "lagrangian centeralign">F</span> Public Data Archive</br>
+            All data must be synchronized.
+            </br> 
+            
+            </br>
+            <div class="opensource centeralign">Lagrangian is open source and will always be.</div>
+            </br>
+            <div style="text-align: center;">
+                <a href="{% url 'demo' %}">
+            <button class="wowbutton" type='submit' name='button1' value='save' > Product Demo </button></a>
+            </div>
+            
+        </div>
+    </div>
+    <div class="col-4">
+        
+    </div>
+</div>
+<div class="row" style="background-color:#000000;margin-left:-8px;margin-right:-8px;">
+    </br>
+    </br>
+    <div class="coredescript centeralign">
+        <img src="{% static 'img/Qnew.png' %}" width="100px"height="120px"></br></br>
+        Our core product is <span class="granite">Granite</span>
+    </div>
+    <div class="col-2">
+    </div>
+    <div class="col-8">
+        <div class="coredescriptinner centeralign">
+            Although we are open source, we don't reveal our Alpha testing products until release.</br>
+            We want to ensure the security and the integrity of your data performance before release.
+        </div>
+    </div>
+    <div class="col-2">
+        
+    </div>
+</div>
+<div class="row" style="background-color:#000000;margin-left:-8px;margin-right:-8px; padding-bottom:50px;">
+    </br>
+    </br>
+    <div class="col-2">
+    </div>
+    <div class="col-4">
+        <div class= "formula centeralign">
+            T
+        </div>
+        <div class="coredescript centeralign">
+            Kinetic.
+        </div>
+        <div class="coredescriptinner centeralign">
+            Gather the data. </br>
+            csv, json, txt, web
+        </div>
+    </div>
+    <div class="col-4">
+        <div class= "formula centeralign">
+            U
+        </div>
+        <div class="coredescript centeralign">
+            Potential.
+        </div>
+        <div class="coredescriptinner centeralign">
+            Analyze and Parse the data.
+        </div>
+    </div>
+    <div class="col-2">
+    </div>
+</div>
+<div class="row" style="background-color:#000000;margin-left:-8px;margin-right:-8px; padding-bottom:50px;">
+    </br>
+    </br>
+    <div class="col-2">
+    </div>
+    <div class="col-8">
+        <div class= "formula centeralign">
+            λ
+        </div>
+        <div class="coredescript centeralign">
+            Lambda.
+        </div>
+        <div class="coredescriptinner centeralign">
+            Deploy
+        </div>
+         <div style="text-align: center; margin-top:100px;">
+                <a href="{% url 'login' %}">
+            <button class="loginbutton" type='submit' name='button1' value='save'  > Login </button></a>
+            </div>
+    </div>
+    <div class="col-2">
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-1">
+    </div>
+    <div class="col-10" id="infocontainer">
+        <div class="containerinfo">
+            Here are all the data entries we've analyzed so far:</br>
+            We have analyzed {{lenwow}} queries today. </br>
+        <marquee behavior="scroll" direction= "down" scrollamount="10" bgcolor="#000000"  width="100%" height="80%">   
+        {{ wow }}
+        </marquee>
+        end</br>
+        
+    </div>
+    <div class="col-1">
+    </div>
+
+</div>
+
+
+
+

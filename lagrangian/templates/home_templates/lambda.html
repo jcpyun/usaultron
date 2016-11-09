@@ -1,0 +1,109 @@
+{% load staticfiles %}
+
+<link rel="icon" href="{% static 'img/jp.png' %}" type="image/png" sizes="16x16">
+<link href="{% static 'css/lambda.css' %}" rel="stylesheet">
+
+<style>
+    body {
+   // background-color: #102010;
+    background: #102010;
+    background: -webkit-linear-gradient(left top, #0A1A0A, #102010); /* Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #0A1A0A, #102010); /* Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #0A1A0A, #102010); /*  Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right,#000000,  #102010); /* Standard */
+     margin: 0;
+
+}
+@font-face {
+    font-family: 'Blender'; 
+    src: url("{% static 'font/blender.ttf' %}");
+}
+</style>
+
+<div class="row" style="">
+    
+        <div class= "innerblender centeralign" style="margin-bottom:10px">
+            LAMBDA LIST
+           http://open.canada.ca/
+        </div>
+        <div class="col-4">
+            <div class= "formula centeralign"> MAP
+                </div>
+            <div class= "innerdescript">
+                
+                <span class= "lagrangian centeralign">MAP API</span> to plot your coordinates</br>
+                If your data requires integration with mapping technology, use our map api.
+                </br> 
+                
+                </br>
+                <div class="opensource centeralign">Lagrangian is open source and will always be.</div>
+                </br>
+                
+                
+            </div>
+        </div>
+    
+
+        <div class="col-4">
+            <div class= "formula centeralign"> PLOTTABLE
+                </div>
+            <div class= "innerdescript">
+                
+                <span class= "lagrangian centeralign">PLOTTABLE API</span> 
+                Of course we have 
+                </br> 
+                
+                </br>
+                <div class="opensource centeralign">Lagrangian is open source and will always be.</div>
+                </br>
+                
+                
+            </div>
+        </div>
+        <div class="col-4">
+            <div class= "formula centeralign"> BROADCAST
+                </div>
+            <div class= "innerdescript">
+                
+                <span class= "lagrangian centeralign">Broadcast:</span> We used Granite to populate news data.</br>
+                We are using publically available api to scrape news data from Bloomberg, BBC, CNN, and New York Times.
+                
+                </br> 
+                
+                </br>
+                <div class="opensource centeralign">Lagrangian is open source and will always be.</div>
+                </br>
+                
+                
+            </div>
+            
+        </div>
+    </div>
+<div class="row"style="padding-bottom:200px;">
+    <div class="col-4">
+    <div style="text-align: center;">
+                    <a href="{% url 'enterprise' %}">
+                <button class="wowbutton" type='submit' name='button1' value='save' > Launch Demo </button></a>
+                </div>
+    </div>
+
+    <div class="col-4">
+    <div style="text-align: center;">
+                    <a href="{% url 'demo_drones' %}">
+                <button class="wowbutton" type='submit' name='button1' value='save' > Launch Demo </button></a>
+                </div>
+    </div>
+
+    <div class="col-4">
+    <div style="text-align: center;">
+                    <a href="{% url 'demo_news' %}">
+                <button class="wowbutton" type='submit' name='button1' value='save' > Launch Demo </button></a>
+                </div>
+    </div>
+</div>
+<div class="row" style="padding-bottom:200px;">
+        
+            <div class= "formula centeralign"> Using Granite is extremely easy. 
+            </div>
+       
+</div>

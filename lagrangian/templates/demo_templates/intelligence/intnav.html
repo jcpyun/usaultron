@@ -1,0 +1,20 @@
+{% load staticfiles %}
+<link rel="icon" href="{% static 'img/jcp.png' %}" type="image/png" sizes="16x16">
+<link href="{% static 'css/demo/sidenav.css' %}" rel="stylesheet">
+<div class="sidenav">
+    <ul>
+        <li><img src="{% static 'img/qw.png' %}"  style="width:50px;height:50px;"></li>
+        <li><a href="{% url 'kinetic' %}">W</a></li> 
+        <li><a href="{% url 'potential' %}">P</a></li> 
+        <li><a href="{% url 'home' %}">L</a></li> 
+        <li><a href="{% url 'home' %}">F</a></li> 
+
+    </ul>
+</div>
+ 
+ <style>
+.pad{
+    margin-left:500px;
+}
+
+</style>

@@ -1,0 +1,73 @@
+.wow-font{
+    font-family:  'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    letter-spacing: 2px;
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+}
+.navbar{
+    position:relative;
+    margin-bottom:50px;
+
+}
+.pad{
+    position: relative;
+    right:0px
+}
+ul {
+    /*list-style-type: none;*/
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #101010;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display:inline-block; /*for logo*/
+    margin-bottom:50px;
+}
+li {
+    float: left;
+    list-style-type: none;
+}
+
+li img {
+    display: block;
+    text-align: center;
+    text-decoration: none;    
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;    
+}
+
+li a:hover:not(.active) {
+    background-color: #303030;
+}
+
+.active {
+    background-color: #4CAF50;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}

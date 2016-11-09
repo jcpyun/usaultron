@@ -1,0 +1,229 @@
+/* Designed by jcpyun in California */
+
+/*       Welcome to jcpyun.css      */ 
+/*************************************
+                 Font
+**************************************/
+body {
+    background-color: #ffffff;
+	margin: 0;
+    padding: 0;
+}
+/*************
+**************/
+* {
+    box-sizing: border-box;
+}
+.row::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+[class*="col-"] {
+    float: left;
+    padding: 15px;
+    /*border: 1px solid red;*/
+}
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+/*****
+*****/
+
+.orfont{
+    
+    position: relative;
+font-family: "Blender","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: 100;
+  letter-spacing: 1px;
+    font-size:20;
+   color: 	#FFA500;
+	 text-align: center;
+	 margin-top:0px;
+}
+.markfont{
+    position: relative;
+    font-family: "Blender","Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: 	#FF4500;
+	text-align: center;
+	margin-top:0px;
+}
+.jcp{
+    position: relative;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 550;
+    letter-spacing: 1px;
+    font-size: 60px;
+    color: #FFFFFF;
+    text-align: center;
+    margin-top:150px;
+}
+.smallerwau{
+    position: relative;
+    font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-weight: 550;
+    letter-spacing: 1px;
+    font-size: 30px;
+    color: #2f0466;
+    text-align: center;
+    margin-top:200px;
+}
+.wautemp{
+    position: relative;
+    font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-weight: 550;
+    letter-spacing: 1px;
+    font-size: 50px;
+    color: #43A047;
+    text-align: center;
+    margin-top:30px;
+}
+.wauno{
+    position: relative;
+    font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-weight: 550;
+    letter-spacing: 1px;
+    font-size: 50px;
+    color: #43A047;
+    text-align: center;
+    margin-top:0px;
+}
+.blender{
+    position: relative;
+font-family: "Blender","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: 100;
+  letter-spacing: 1px;
+    font-size:100;
+    color: #ffffff;
+	 text-align: center;
+	 margin-top:0px;
+}
+.colourred{
+
+    color: #ff0000;
+
+}
+.wau2{
+    position: relative;
+    font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-weight: 550;
+    letter-spacing: 1px;
+    font-size: 50px;
+    color: #E53238;
+    text-align: center;
+    margin-top:50px;
+}
+.wau3{
+    position: relative;
+    font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-weight: 550;
+    letter-spacing: 1px;
+    font-size: 50px;
+    color: #0f3aff;
+    text-align: center;
+    margin-top:50px;
+}
+.wau4{
+    position: relative;
+    font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-weight: 550;
+    letter-spacing: 1px;
+    font-size: 20px;
+    color: #0f3aff;
+    text-align: center;
+    margin-top:20px;
+}
+.wau5{
+    position: relative;
+    font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-weight: 550;
+    letter-spacing: 1px;
+    font-size: 30px;
+    color: #0f3aff;
+    text-align: center;
+    margin-top:20px;
+}
+
+/*************************************
+               image
+**************************************/
+
+.logocontainer{
+    text-align:center;
+}
+
+.logos{
+    display:inline-block;
+    margin:5px 20px;
+    padding:5px;
+}
+
+/*************************************
+               form 
+**************************************/
+
+.wow-form{
+  /*background: #FFFFFF;*/
+  /*max-width: 360px;*/
+  margin: 0 auto 0px;
+  width:100%;
+  text-align: center;
+
+}
+
+
+
+/*************************************
+                 Fade
+**************************************/
+.fade1 {
+    -webkit-animation: fadein 2.5s; /* Safari and Chrome */
+    -moz-animation: fadein 2.5s; /* Firefox */
+    -ms-animation: fadein 2.5s; /* Internet Explorer */
+    -o-animation: fadein 2.5s; /* Opera */
+    animation: fadein 2.5s;
+}  
+.fade2 {
+    -webkit-animation: fadein 5s; /* Safari and Chrome */
+    -moz-animation: fadein 5s; /* Firefox */
+    -ms-animation: fadein 5s; /* Internet Explorer */
+    -o-animation: fadein 5s; /* Opera */
+    animation: fadein 5s;
+} 
+.fade3 {
+    -webkit-animation: fadein 8s; /* Safari and Chrome */
+    -moz-animation: fadein 8s; /* Firefox */
+    -ms-animation: fadein 8s; /* Internet Explorer */
+    -o-animation: fadein 8s; /* Opera */
+    animation: fadein 8s;
+} 
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+/* Firefox */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+/* Safari and Chrome */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}​
+

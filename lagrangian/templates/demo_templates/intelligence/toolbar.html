@@ -1,0 +1,35 @@
+{% load staticfiles %}
+
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/d3.js' %}"></script>
+<script src="{% static 'js/plottable.js' %}"></script>
+<link href="{% static 'css/plottable.css' %}" rel="stylesheet">
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+
+
+
+<link rel="icon" href="{% static 'img/qw.png' %}" type="image/png" sizes="16x16">
+
+<link href="{% static 'css/dashboard/dashboard.css' %}" rel="stylesheet">
+{% include 'demo_templates/intelligence/intnav.html' %}
+
+<div class="rowwithside">
+    <div class="colz-12">
+        <div class="first" >
+                Generic Intelligence Agency
+        </div>
+    </div>
+    <div class="colz-6">
+        <div class="second">
+            Today's Uploads:
+        </div>
+    </div>
+    <div class="colz-6">
+        <div class="second">
+            Tasks:
+        </div>
+    </div>
+</div>
+

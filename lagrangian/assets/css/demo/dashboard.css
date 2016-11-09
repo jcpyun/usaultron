@@ -1,0 +1,291 @@
+/* ********
+
+mapping 
+
+******** */
+#mapid { height: 100%; }
+
+/*  
+//////////
+*/
+
+@font-face {
+    font-family: 'Blender'; /*a name to be used later*/
+    src: url("{% static 'font/blender.ttf' %}"); /*URL to font*/
+}
+.innerblender{
+
+    font-family: "Blender","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 200;
+    letter-spacing: 1px;
+    font-size:20px;
+    color: #ffffff;
+	margin-top:0px;
+}
+.first{
+
+    font-family: "Blender","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 200;
+    letter-spacing: 1px;
+    font-size:50px;
+    color: #fff;
+	margin-top:0px;
+}
+.second{
+    font-family: "Blender","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 200;
+    letter-spacing: 1px;
+    font-size:20px;
+    color: #fff;
+	margin-top:0px;
+}
+.fileupload{
+    font-family: "Blender","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 200;
+    letter-spacing: 1px;
+    font-size:20px;
+    color: #fff;
+	margin-top:0px;   
+}
+
+.fileupload button{
+    font-family: "Blender",'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    outline: 0;
+    background: #18e687;
+    width: 20%;
+    border: 0;
+    padding: 15px;
+    color: #FFF;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.centeralign{
+    text-align: center;
+}
+.workspace{
+    font-family:"Blender", 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    letter-spacing: 2px;
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    /*margin-top:50px;*/
+}
+
+.tools{
+    position:fixed;
+    font-family:"Blender", 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    letter-spacing: 2px;
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    /*margin-top:50px;*/
+}
+
+#toolbar{
+    /*margin-top:50px;*/
+    position:relative;
+
+    margin-bottom:50px;
+
+}
+ #leftcontainer {
+     height:100%;
+     background: #333333;
+
+ }
+ .leftheader{
+     padding-left:10px;
+
+ }
+#maintool{
+   height:100%;
+   /*background: #18e687;
+  */
+}
+
+
+ #rightsidebar {
+     height:100%;
+
+     background: #333333; 
+ 
+ }
+ 
+
+/*************
+**************/
+* {
+    box-sizing: border-box;
+}
+.row::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+.smallpic {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 110px; 
+}
+#images{
+    text-align:center;
+}
+.piccontainer{
+    width:450px;
+}
+
+[class*="col-"] {
+    position: relative;
+    float: left;
+    padding: 15px;
+    /*border: 1px solid red;*/
+}
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+/*****
+*****/
+.rowwithside::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+.rowwithside{
+    position: relative;
+    margin-left:50px;
+    /*margin-bottom:-100px;*/
+    
+}
+
+
+[class*="colz-"] {
+    position: relative;
+    float: left;
+    padding: 0px;
+    /*border: 1px solid red;*/
+}
+.colz-1 {
+    position: relative;
+    width: 8.33%;}
+.colz-2 {width: 16.66%;}
+.colz-3 {width: 25%;}
+.colz-4 {width: 33.33%;}
+.colz-5 {width: 41.66%;}
+.colz-6 {width: 50%;}
+.colz-7 {width: 58.33%;}
+.colz-8 {
+    position: relative;
+    width: 66.66%;}
+.colz-9 {width: 75%;}
+.colz-10 {width: 83.33%;}
+.colz-11 {width: 91.66%;}
+.colz-12 {width: 100%;}
+
+
+
+
+
+/*.logoimg{
+    max-height:50%;
+    max-width:50%;  
+    width:20%;
+    height:20%;  
+}*/
+/* search bar */
+
+.search-form{
+    height: 25px;
+    background-color: #e1e1e1;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+    border-radius: 100px;
+	position:relative;
+    width:40%;
+    }
+
+.search-form .searchbutton{
+  position:absolute;
+
+	right:5px;
+    }
+
+
+.sfield {
+    float: left;
+    margin: 5px 0 0 8px;
+    font: 10pt "Blender", sans-serif;
+    text-align: center;
+    color: #888;
+    height: 15px;
+    line-height: 18px;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    width:100%;
+    }
+
+/* ///////// */
+.wow-form{
+  background: #303030;
+  max-width: 360px;
+
+  padding: 20px;
+  text-align: center;
+
+}
+.wow-form input{
+font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.wow-form textarea{
+font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.wow-form button{
+	 font-family: "Blender",'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  outline: 0;
+  background: #43A047;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFF;
+  font-size: 20px;
+ 
+  cursor: pointer;
+}
+.wow-form button:hover,.form button:active,.form button:focus {
+  background: #18e687;
+}
+/* ////////////// */
+.pad{
+    position: absolute;
+    right:0px;
+}
+
+

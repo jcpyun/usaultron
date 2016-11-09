@@ -1,0 +1,88 @@
+<!--
+      /\\\\\\\\\\\        /\\\\\\\\\  /\\\\\\\\\\\\\     /\\\        /\\\  /\\\        /\\\  /\\\\\     /\\\        
+      \/////\\\///      /\\\////////  \/\\\/////////\\\  \///\\\    /\\\/  \/\\\       \/\\\ \/\\\\\\   \/\\\       
+           \/\\\       /\\\/           \/\\\        \/\\\   \///\\\/\\\/    \/\\\       \/\\\ \/\\\/\\\  \/\\\      
+            \/\\\      /\\\             \/\\\\\\\\\\\\\/      \///\\\/       \/\\\       \/\\\ \/\\\//\\\ \/\\\     
+             \/\\\     \/\\\             \/\\\/////////         \/\\\         \/\\\       \/\\\ \/\\\\//\\\\/\\\    
+              \/\\\     \//\\\            \/\\\                  \/\\\         \/\\\       \/\\\ \/\\\ \//\\\/\\\   
+        /\\\   \/\\\      \///\\\          \/\\\                  \/\\\         \//\\\       /\\\ \/\\\  \//\\\\\\  
+         \//\\\\\\\\\        \////\\\\\\\\\ \/\\\                  \/\\\         \///\\\\\\\\\/    \/\\\   \//\\\\\ 
+           \/////////            \/////////  \///                   \///            \/////////      \///     \/////
+
+
+-->
+{% load staticfiles %}
+{% include 'mynavbar.html' %}
+
+<link rel="icon" href="{% static 'img/jcp.png' %}" type="image/png" sizes="16x16">
+<link href="{% static 'css/login.css' %}" rel="stylesheet">
+<style>
+    body {
+    background-color: #404040;
+}
+@font-face {
+    font-family: 'Blender'; /*a name to be used later*/
+    src: url("{% static 'font/blender.ttf' %}"); /*URL to font*/
+}
+</style>
+
+
+
+
+
+{% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+    {% else %}
+    <p>Please login to see this page.</p>
+    {% endif %}
+{% endif %}
+{% if not user.is_authenticated %}
+</br>
+</br>
+</br>
+</br>
+</br>
+
+<div class="blender"><img src="{% static 'img/jp.png' %}" alt="" style="width:80px;height:80px;"> Granite</div>
+</br>
+</br>
+</br>
+</br>
+<div class= "wow-form">
+<form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+ 
+            <div class="smallblender"> Username</div>
+            <p>{{ form.username }}</p>
+      
+       
+            <div class="smallblender">Password</div>
+            <p>{{ form.password }}</p>
+
+
+    <button type="submit" action="home.html" >login </button>
+    <input type="hidden" name="next" value="{{ next }}" />
+</form>
+
+{# Assumes you setup the password_reset view in your URLconf #}
+<!--<p><a href="{% url 'password_reset' %}">Lost password?</a></p>-->
+<div class= "override"><a href="{% url 'home' %}">Override</a></div>
+</div>
+{% else %}
+</br>
+</br>
+</br>
+</br>
+</br>
+<div class="fade1 blender"> You are logged in </div>
+
+{% endif %}
+
+
+

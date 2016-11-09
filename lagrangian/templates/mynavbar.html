@@ -1,0 +1,36 @@
+{% load staticfiles %}
+<link rel="icon" href="{% static 'img/qw.png' %}" type="image/png" sizes="16x16">
+<link href="{% static 'css/jcpyunnav.css' %}" rel="stylesheet">
+<div id="navbar" class="">
+    <!--<img src="{% static 'img/jp.png' %}" alt="" style="width:50px;height:50px;">-->
+    <ul class="wow-font">
+        <li><img src="{% static 'img/qw.png' %}" alt="" style="width:50px;height:50px;"></li>
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'dashboard' %}">Granite</a></li> 
+        {% else %}
+        <li><a href="{% url 'login' %}">Granite</a></li> 
+        {% endif %}
+        <li><a href="{% url 'enterprise' %}">Enterprise</a></li> 
+        <li><a href="{% url 'fermi' %}">Fermi</a></li> 
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'logout' %}">logout</a></li> 
+        {% else %}
+        <div class="pad">
+            <li><a href="{% url 'login' %}">login</a></li> 
+        </div>
+        {% endif %}
+        <!--<div class="pad">
+            <li><a href="">ad</a></li> 
+        </div>-->
+
+    </ul>
+</div>
+ 
+ <style>
+.pad{
+    position:absolute;
+    text-align:right;
+    margin-left:0;
+}
+
+</style>

@@ -1,0 +1,182 @@
+{% load staticfiles %}
+
+<link rel="icon" href="{% static 'img/jp.png' %}" type="image/png" sizes="16x16">
+<link href="{% static 'css/demo.css' %}" rel="stylesheet">
+
+<style>
+    body {
+   // background-color: #102010;
+    background: #102010;
+    background: -webkit-linear-gradient(left top, #0A1A0A, #102010); /* Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #0A1A0A, #102010); /* Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #0A1A0A, #102010); /*  Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right,#000000,  #102010); /* Standard */
+     margin: 0;
+
+}
+@font-face {
+    font-family: 'Blender'; 
+    src: url("{% static 'font/blender.ttf' %}");
+}
+</style>
+
+<div class="row" style="">
+    
+        <div class= "innerblender centeralign" style="margin-bottom:10px">
+            PRODUCT DEMOS
+           
+        </div>
+        <div class="col-4">
+            <div class= "formula centeralign"> ENTERPRISE
+                </div>
+            <div class= "innerdescript"> 
+                <span class= "lagrangian centeralign">Enterprise:</span>We used Granite to populate enterprise information.</br>
+                Using public Bloomberg API, we populated enterprise json file. Then, using lambda plugins, we populated data analysis.</br>
+                <span class= "lagrangian"> Lambda Plugins:</span> plots, sentiment analysis, scraper
+                </br>   
+            </div>
+        </div>
+    
+
+        <div class="col-4">
+            <div class= "formula centeralign"> DRONES
+                </div>
+            <div class= "innerdescript">
+                
+                <span class= "lagrangian centeralign">Drones:</span> We used Granite to populate list of Drone attacks.</br>
+                Using open source data, we are displaying real-time and historical
+                 data from the Bureau of Investigative Journalism describing every reported 
+                 United States drone strikes in Pakistan, Yemen, and Somalia.
+                </br> 
+                 <span class= "lagrangian"> Lambda Plugins:</span> map, plots
+               
+            </div>
+        </div>
+        <div class="col-4">
+            <div class= "formula centeralign"> BROADCAST
+                </div>
+            <div class= "innerdescript">
+                
+                <span class= "lagrangian centeralign">Broadcast:</span> We used Granite to populate news data.</br>
+                We are using publically available api to scrape news data from Bloomberg, BBC, CNN, and New York Times. This demonstrates granite's seamless integration
+                with public API.
+                
+                </br> 
+                 <span class= "lagrangian"> Lambda Plugins:</span> scraper
+                </br>
+                </br>
+            </div>
+        </div>
+    </div>
+<div class="row"style="padding-bottom:20px;">
+    <div class="col-4">
+        
+    <div style="text-align: center;">
+        <div class="opensource centeralign">Lagrangian is open source and will always be.</div>
+        </br>
+                    <a href="{% url 'enterprise' %}">
+                <button class="wowbutton" type='submit' name='button1' value='save' > Launch Demo </button></a>
+                </div>
+    </div>
+
+    <div class="col-4">
+    <div style="text-align: center;">
+        <div class="opensource centeralign">Lagrangian is open source and will always be.</div>
+        </br>
+                    <a href="{% url 'demo_drones' %}">
+                <button class="wowbutton" type='submit' name='button1' value='save' > Launch Demo </button></a>
+                </div>
+    </div>
+
+    <div class="col-4">
+    <div style="text-align: center;">
+        <div class="opensource centeralign">Lagrangian is open source and will always be.</div>
+        </br>
+                    <a href="{% url 'demo_news' %}">
+                <button class="wowbutton" type='submit' name='button1' value='save' > Launch Demo </button></a>
+                </div>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="row" style="">
+   
+        <div class="col-4">
+            <div class= "formula centeralign">INTELLIGENCE AGENCY
+                </div>
+            <div class= "innerdescript">
+                
+                <span class= "lagrangian centeralign">Fighting Terrorism:</span>We used Granite to populate data of malicious organization.</br>
+                We populated our database with known threats in the world.</br>
+                <span class= "lagrangian"> Lambda Plugins:</span> plots, sentiment analysis, scraper
+                </br> 
+
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class= "formula centeralign"> POLICE AGENCY
+                </div>
+            <div class= "innerdescript">
+                
+                <span class= "lagrangian centeralign">Toronto Police Department</span> We used Granite to populate list of traffic cameras in Toronto.</br>
+                 If a crime occurs, you will be able to pin point which camera might have the glimpse of the suspect.
+                </br> 
+                 <span class= "lagrangian"> Lambda Plugins:</span> map, plots
+               
+            </div>
+        </div>
+        <div class="col-4">
+            <div class= "formula centeralign"> CLASSIFIED
+                </div>
+            <div class= "innerdescript">
+                
+                <span class= "lagrangian centeralign">Classified:</span> Classified
+                
+                </br> 
+                 <span class= "lagrangian"> Lambda Plugins:</span> classified
+                </br>
+                </br>
+            </div>
+        </div>
+    </div>
+<div class="row"style="padding-bottom:200px;">
+    <div class="col-4">
+        
+    <div style="text-align: center;">
+        <div class="opensource centeralign">Lagrangian is open source and will always be.</div>
+        </br>
+                    <a href="{% url 'enterprise' %}">
+                <button class="wowbutton" type='submit' name='button1' value='save' > Launch Demo </button></a>
+                </div>
+    </div>
+
+    <div class="col-4">
+    <div style="text-align: center;">
+        <div class="opensource centeralign">Lagrangian is open source and will always be.</div>
+        </br>
+                    <a href="{% url 'demo_police' %}">
+                <button class="wowbutton" type='submit' name='button1' value='save' > Launch Demo </button></a>
+                </div>
+    </div>
+
+    <div class="col-4">
+    <div style="text-align: center;">
+        <div class="opensource centeralign">Lagrangian is open source and will always be.</div>
+        </br>
+                    <a href="">
+                <button class="classifiedbutton" type='submit' name='button1' value='save' >CLASSIFIED </button></a>
+                </div>
+    </div>
+</div>
+
+<div class="row" style="padding-bottom:200px;">
+            <div class= "formula centeralign"> Using Granite is extremely easy. 
+            </div>
+       
+</div>
+

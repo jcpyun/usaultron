@@ -1,0 +1,64 @@
+{% load staticfiles %}
+
+<link rel="icon" href="{% static 'img/jp.png' %}" type="image/png" sizes="16x16">
+<link href="{% static 'css/dashboard/dashboard.css' %}" rel="stylesheet">
+{% include 'sidenavbar.html' %}
+<style>
+    body {
+        margin:0;
+   // background-color: #102010;
+    background: #102010;
+    background: -webkit-linear-gradient(left top, #0A1A0A, #102010); /* Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #0A1A0A, #102010); /* Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #0A1A0A, #102010); /*  Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right,#000000,  #102010); /* Standard */
+
+}
+@font-face {
+    font-family: 'Blender'; 
+    src: url("{% static 'font/blender.ttf' %}");
+}
+</style>
+
+<style>
+table, th, td {
+    
+    border-collapse: collapse;
+}
+</style>
+<div class="rowwithside">
+    <div class="colz-12">
+            <div class="first" >
+                Granite.0.0.1
+            </div>
+            <div class="fileupload">
+             
+                <table style="width:100%;background-color:#5A1A5A">
+                <tr>
+                    <th>Query</th>
+                    <th>Filename</th>
+                </tr>
+                {% for x in uploaded %}
+                
+                <tr>
+                    <td>{{ x }}</td>
+                    <td>http://127.0.0.1:8000{{x.file.url}}</td>
+                </tr>
+                    {% endfor %}
+                </table>
+            </div>
+    </div>
+</div>
+<div class="rowwithside">
+    <div class="colz-6">
+        <div class="first">
+            Potential
+        </div>
+    </div>
+    <div class="colz-6">
+        <div class="first">
+            
+        </div>
+    </div>
+
+</div>

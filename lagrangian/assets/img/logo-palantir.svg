@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="19px" height="23px" viewBox="0 0 19 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.4.4 (17249) - http://www.bohemiancoding.com/sketch -->
+    <title>Fill 9 + Fill 10</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Desktop-HD-Copy" sketch:type="MSArtboardGroup" transform="translate(-30.000000, -31.000000)" fill="#A7B6C2">
+            <g id="Side" sketch:type="MSLayerGroup" transform="translate(0.000000, -1.000000)">
+                <g id="Logo-/-Name" transform="translate(30.000000, 26.000000)" sketch:type="MSShapeGroup">
+                    <g id="Palantir" transform="translate(0.000000, 6.000000)">
+                        <g id="Fill-9-+-Fill-10">
+                            <path d="M9.05366651,0.0595272046 C4.25659495,0.0595272046 0.367786416,3.94833573 0.367786416,8.7454073 C0.367786416,13.5424789 4.25659495,17.4311052 9.05366651,17.4311052 C13.8505559,17.4311052 17.7395466,13.5424789 17.7395466,8.7454073 C17.7395466,3.94833573 13.8505559,0.0595272046 9.05366651,0.0595272046 M9.05330219,14.7595076 C5.73666658,14.7595076 3.04794568,12.0704224 3.04794568,8.75396894 C3.04794568,5.43733334 5.73666658,2.74861243 9.05330219,2.74861243 C12.37012,2.74861243 15.059023,5.43733334 15.059023,8.75396894 C15.059023,12.0704224 12.37012,14.7595076 9.05330219,14.7595076" id="Fill-9"></path>
+                            <path d="M16.8174392,16.6694831 L9.05366651,20.0220048 L1.28989382,16.6694831 L0,19.1417948 L9.05366651,23 L18.1071509,19.1417948 L16.8174392,16.6694831" id="Fill-10"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,207 @@
+{% load staticfiles %}
+
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/d3.js' %}"></script>
+<script src="{% static 'js/plottable.js' %}"></script>
+<link href="{% static 'css/plottable.css' %}" rel="stylesheet">
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+
+
+
+<link rel="icon" href="{% static 'img/qw.png' %}" type="image/png" sizes="16x16">
+<link href="{% static 'css/jcptoolbar.css' %}" rel="stylesheet">
+<body>
+
+
+
+    <div id ="toolbar">
+        <!--<img src="{% static 'img/jp.png' %}" alt="" style="width:50px;height:50px;">-->
+        <ul class="tools">
+            <li><img src="{% static 'img/qq.png' %}" alt="" style="width:45px;height:40px; padding: 10px 0 0 20px;"></li>
+            <div class="leftpad" style="margin-left:20px">
+                <li><a href="{% url 'home' %}">Home</a></li> 
+            </div>
+            <div class="pad">
+                <li><a href="">jcpyun API</a></li> 
+                <li><a href="{% url 'login' %}">login</a></li> 
+            </div>
+        </ul>    
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-2" id="leftcontainer"  >
+            <div class= "leftheader">
+                <img src="{% static 'img/qw.png' %}" width="40px"height="40px">
+                 <div class="innerblender" style="margin-top:10px;">TRACKING THE UNITED STATES DRONE STRIKES</div>
+                 <div class="innerdescript" style="margin-top:10px;">
+                 This map uses open source data to show the real-time
+                 and historical data from the Bureau of Investigative Journalism describing every
+                 reported United States drone strikes in Pakistan, Yemen, and Somalia. 
+                 
+                  </div>
+                <div class="innerblender" style="margin-top:10px; text-align:center;"></div>
+            </div>
+            <div class= "search-form">
+                <form method = 'GET' action=''>
+                    <div class="row">
+                        <div class="colz-10">
+                            <input  class="sfield" type="text" name="search_box"  placeholder="Enter Command" >
+                        </div>
+                        <div class="colz-2">
+                            <input type="image" class="searchbutton" type='submit' src="{% static 'img/search.png' %}" width="30px"height="30px" >
+                        </div>
+                    </div>
+                </form>  
+            </div>
+           
+            
+        </div>
+        <div class="colz-8" id="maintool">
+            
+             <div id="mapid" style="height:90%;"></div>
+             <div class="innerdescript">
+       
+                <div class="innerblender" style="margin-top:0px;">
+                    Query: 
+                    {% if search_query != None %}
+                    {{ search_query }}
+                    {% endif %}
+                    {{ total }}
+                    
+                </div>
+            </div>
+
+        </div>
+        <div class="col-2" id="rightsidebar">
+            <div class="innerblender" style="margin-top:10px;">Histogram:</div>
+            <div class="innerblender" style="margin-top:10px;">
+                {% for k, v in total.iteritems %}
+                {{ k }} : {{ v }} </br>
+                {% endfor %}</div>
+               
+            <div id="moreinfo"></div>
+          
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript">
+
+xmlhttp=new XMLHttpRequest();
+xmlhttp.open("GET", "http://127.0.0.1:8000/media/drone.json", false);
+xmlhttp.send();
+var parseddata = JSON.parse(xmlhttp.responseText);
+var w=500;
+var h=500;
+
+var dataset=[
+    [50,20],[480,90],[250,50],[100,33],[330,95],
+    [410,12],[475,44]
+];
+
+var xScale=d3.scale.linear()
+    .domain([0,d3.max(dataset,function(d){
+        return d[0];
+    })])
+    .range([0,w]);
+var yScale=d3.scale.linear()
+    .domain([0,d3.max(dataset,function(d){
+        return d[1];
+    })])
+    .range([0,h]);
+    
+var svgContainer = d3.select("#moreinfo")
+        .append("svg")
+        .attr("width",w)
+        .attr("height",h);
+        
+svgContainer.selectAll("circlez")
+    .data(dataset)
+    .enter()
+    .append("circle")
+    .attr("cx",function(d){
+        return xScale(d[0]);
+    })
+    .attr("cy",function(d){
+        return yScale(d[1]);
+    })
+    .attr("r",20);
+/*
+var wau= svgContainer.append("circle")
+        .attr("cx", 30)
+        .attr("cy", 30)
+        .attr("r", 20);
+var poop= svgContainer.append("rect")
+        .attr("x", 40)
+        .attr("y", 40)
+        .attr("width", 20)
+        .attr("height",30);
+var xAxis=d3.svg.axis()
+    .scale(xScale)
+    .orient("top");
+*/
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+.custom .leaflet-popup-tip,
+.custom .leaflet-popup-content-wrapper {
+    background: #909090;
+    color: #ffffff;
+    font: 10pt "Blender", sans-serif; 
+}
+</style>
+
+<script src="{% static 'js/dronestrike.js' %}"></script>
+<script src="{% static 'js/leafgenerate.js' %}"></script>
+
+
+<script>
+L.Control.Watermark = L.Control.extend({
+    onAdd: function(mymap) {
+        var img = L.DomUtil.create('img');
+        img.src = "{% static 'img/jp.png' %}";
+        img.style.width = '50px';  
+        return img;
+    },
+    onRemove: function(mymap) {
+    }
+});
+
+L.control.watermark = function(opts) {
+    return new L.Control.Watermark(opts);
+}
+L.control.watermark({ position: 'topright' }).addTo(mymap);
+</script>
